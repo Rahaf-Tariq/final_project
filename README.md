@@ -73,7 +73,7 @@ php artisan key:generate
 **4. Configure `.env`**
 
 ```env
-APP_NAME="LUXE CHRONO"
+APP_NAME="Laravel"
 APP_URL=http://localhost:8000
 
 DB_CONNECTION=sqlite
@@ -104,7 +104,7 @@ npm run dev
 php artisan serve
 ```
 
-App will be available at: **http://localhost:8000**
+Will be available at: **http://localhost:8000**
 
 ---
 
