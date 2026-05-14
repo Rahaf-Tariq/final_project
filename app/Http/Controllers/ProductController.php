@@ -42,7 +42,7 @@ class ProductController extends Controller
         return view('products.index', compact('products', 'categories'));
     }
  
-    // ✅ FIX: Slug se product dhundh raha hai
+
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();

@@ -20,7 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
  
 // Products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-// ✅ FIX: slug ki jagah id use ho raha hai
+
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
  
 // Cart

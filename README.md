@@ -1,59 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ⌚ LUXÉ CHRONO
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-featured luxury watch ecommerce web application built with Laravel 12, dual-guard authentication, and SQLite.
 
-## About Laravel
+**Demo Video:**
+https://drive.google.com/file/d/1eKxlgHpmZqeGIqRTNJtAQDTFCrEZzc1p/view?usp=sharing
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Repository:**
+https://github.com/Rahaf-Tariq/final_project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tech Stack
 
-## Learning Laravel
+| Layer          | Technology                            |
+| -------------- | ------------------------------------- |
+| Backend        | Laravel 12 (PHP 8.2+)                 |
+| Frontend       | Blade Templates + Vite                |
+| Authentication | Laravel Dual Guard (Customer + Admin) |
+| Database       | SQLite                                |
+| Admin Tables   | Yajra DataTables                      |
+| Styling        | Bootstrap 5.3 + Font Awesome 6.4      |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Features
 
-## Laravel Sponsors
+### Customer Side
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Home page with 6 featured luxury watches
+- Product listing with category, price & sort filters
+- Product detail page with related products
+- Shopping cart (session-based)
+- Checkout & order placement (Cash on Delivery / Credit Card)
+- Order success confirmation page
+- Contact form
+- User registration & login
 
-### Premium Partners
+### Admin Panel (`/admin`)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Dashboard with total products, orders, revenue & users
+- Product management — Create, Edit, Delete, image upload
+- Order management — view & update order status
+- User management — view users & order history
+- Admin accounts management — full CRUD
+- Contact messages — view submissions
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+**1. Clone the repository**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/Rahaf-Tariq/final_project.git
+cd final_project
+```
 
-## Security Vulnerabilities
+**2. Install dependencies**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+npm install
+```
+
+**3. Environment setup**
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+**4. Configure `.env`**
+
+```env
+APP_NAME="LUXE CHRONO"
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=sqlite
+```
+
+**5. Create the SQLite database file**
+
+```bash
+touch database/database.sqlite
+```
+
+**6. Run migrations & seeders**
+
+```bash
+php artisan migrate --seed
+```
+
+**7. Storage link**
+
+```bash
+php artisan storage:link
+```
+
+**8. Build frontend & run**
+
+```bash
+npm run dev
+php artisan serve
+```
+
+App will be available at: **http://localhost:8000**
+
+---
+
+## Database Tables
+
+| Table         | Description                                |
+| ------------- | ------------------------------------------ |
+| `users`       | Registered customers                       |
+| `admins`      | Admin accounts (separate table & guard)    |
+| `products`    | Watch info, price, stock, image, slug      |
+| `orders`      | Customer orders with shipping & status     |
+| `order_items` | Individual items per order with unit price |
+| `contacts`    | Messages submitted via contact form        |
+
+---
+
+## Admin Access
+
+After seeding, login at `/admin/login` with:
+
+```
+Email:    admin@example.com
+Password: password123
+```
+
+---
+
+## Project Structure
+
+```
+final_project/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/          # Admin panel controllers
+│   │   │   ├── Auth/           # Login & Register controllers
+│   │   │   ├── CartController.php
+│   │   │   ├── CheckoutController.php
+│   │   │   ├── HomeController.php
+│   │   │   ├── ProductController.php
+│   │   │   └── ContactController.php
+│   │   └── Middleware/
+│   │       └── IsAdmin.php     # Admin route guard
+│   ├── DataTables/             # Yajra DataTable classes
+│   └── Models/                 # Eloquent models
+├── database/
+│   ├── migrations/             # Table blueprints
+│   ├── seeders/                # Test data seeders
+│   ├── factories/              # Fake data factories
+│   └── database.sqlite         # SQLite database file
+├── resources/
+│   └── views/
+│       ├── layouts/            # Master layout files
+│       ├── admin/              # Admin panel views
+│       ├── products/
+│       ├── cart/
+│       └── checkout/
+├── routes/
+│   ├── web.php                 # All application routes
+│   └── auth.php                # Auth routes
+└── storage/
+    └── app/public/products/    # Uploaded product images
+```
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-source and available under the [MIT License](LICENSE).
